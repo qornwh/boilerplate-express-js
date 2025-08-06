@@ -1,10 +1,10 @@
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import morgan from 'morgan';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
-//import helloRouter from './routes/hello.js';
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -18,18 +18,22 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 
+// 프론트 정적 파일 서빙
+const distPath = path.join(__dirname, '..', 'dist');
+app.use(express.static(distPath));
+
 // 라우터
 app.use('/api/hello', (req, res) => {
   const jsonObj = {
     aaa: 'aaa',
     bbb: 'bbb',
   };
-  res.json(jsonObj);
+  res.status().json(jsonObj);
 });
 
-// 기본
-app.get('/', (req, res) => {
-  res.send('Welcome to Express API Starter!');
+// 일단 분석필요 express 5 부터 /*{이름} <= 일단 이름 아무거나 되는데 이유 모름
+app.get('/*myApp', (req, res) => {
+  res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // 에러 핸들러

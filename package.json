@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js",
     "format": "prettier \"src/**/*.{js,json,md}\" --write"
   },
-  "type": "module",
+  "type": "commonjs",
   "author": "",
   "license": "ISC",
   "dependencies": {
