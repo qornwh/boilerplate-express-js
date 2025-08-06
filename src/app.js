@@ -32,6 +32,7 @@ app.use('/api/hello', (req, res) => {
 });
 
 // 일단 분석필요 express 5 부터 /*{이름} <= 일단 이름 아무거나 되는데 이유 모름
+// https://expressjs.com/en/guide/migrating-5.html#path-syntax 참고
 app.get('/*myApp', (req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
