@@ -25,10 +25,9 @@ app.use(express.static(distPath));
 // 라우터
 app.use('/api/hello', (req, res) => {
   const jsonObj = {
-    aaa: 'aaa',
-    bbb: 'bbb',
+    test: '프론트 - 벡엔드 연결',
   };
-  res.status().json(jsonObj);
+  res.json(jsonObj);
 });
 
 // 일단 분석필요 express 5 부터 /*{이름} <= 일단 이름 아무거나 되는데 이유 모름
